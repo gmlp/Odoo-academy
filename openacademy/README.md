@@ -1,5 +1,5 @@
 Open Academy module for managing trainings:
 =====================================
-- training course
-- training session
+- training courses
+- training sessions
 - attendees registration
