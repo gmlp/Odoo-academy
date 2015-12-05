@@ -19,7 +19,8 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'view/openacademy_course_view.xml'
+        'view/openacademy_course_view.xml',
+        'view/openacademy_session_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
