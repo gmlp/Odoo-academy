@@ -1,7 +1,8 @@
 from openerp import api
-from openerp import exceptions 
+from openerp import exceptions
 from openerp import fields
 from openerp import models
+from datetime import timedelta
 
 
 class Session(models.Model):
@@ -22,7 +23,8 @@ class Session(models.Model):
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats',
                                 store=True)
     active = fields.Boolean(default=True)
-
+    end_date = fields.Date(string="End Date", store=True,
+        compute="_get_end_date",inverse="_set_end_date")
 
     @api.one
     @api.depends('seats', 'attendee_ids')
@@ -55,3 +57,28 @@ class Session(models.Model):
     def _check_instructor_not_in_attendees(self):
         if self.instructor_id and self.instructor_id in self.attendee_ids:
              raise exceptions.ValidationError("A session's instructor can't be an attendee")
+
+    @api.one
+    @api.depends('duration', 'start_date')
+    def _get_end_date(self):
+         print "_get_end_date+++++++++++++++++"
+         if not (self.start_date and self.duration):
+             self.end_date = self.start_date
+             return
+         # Add duration to start_date, but: Monday + 5 days = Saturday, so
+         # subtract one second to get on Friday instead
+         start = fields.Datetime.from_string(self.start_date)
+         duration = timedelta(days=self.duration, seconds=-1)
+         self.end_date = start + duration
+
+
+    @api.one
+    def _set_end_date(self):
+         if not (self.start_date and self.end_date):
+             return
+         print "_set_end_date-------------------"
+         # Compute the difference between dates, but: Friday - Monday = 4 days,
+         # so add one day to get 5 days instead
+         start_date = fields.Datetime.from_string(self.start_date)
+         end_date = fields.Datetime.from_string(self.end_date)
+         self.duration = (end_date - start_date).days + 1
