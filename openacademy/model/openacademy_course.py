@@ -3,9 +3,6 @@ from openerp import models
 from openerp import fields
 from openerp import _
 
-"""
-This module create amodel of Course
-"""
 
 class Course(models.Model):
     """
@@ -15,9 +12,12 @@ class Course(models.Model):
     name = fields.Char(string="Title", required=True)
     description = fields.Text(string='Description')
     responsible_id = fields.Many2one('res.users',
-                                        ondelete='set null',
-                                        string='Responsible', index=True)
-    session_ids = fields.One2many('openacademy.session', 'course_id', string='Sessions')
+                                     ondelete='set null',
+                                     string='Responsible',
+                                     index=True,)
+    session_ids = fields.One2many('openacademy.session',
+                                  'course_id',
+                                  string='Sessions')
 
     _sql_constraints = [
         ('name_description_check',
@@ -29,9 +29,8 @@ class Course(models.Model):
          _("The course title must be unique")),
     ]
 
-    @api.one  #  api.one send defaults params: cr, uid, id, context
+    @api.one  # api.one send defaults params: cr, uid, id, context
     def copy(self, default=None):
-        print "estoy pasando por la funcion heredada de copy en cursos"
         if default is None:
             default = {}
 
