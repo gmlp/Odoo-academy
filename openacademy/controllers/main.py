@@ -6,6 +6,7 @@ class Academy(Controller):
 
     @route('/academy/academy/', auth='public')
     def index(self, **kw):
+        teachers = http.request.env['openacademy.teacher']
         return http.request.render('openacademy.index', {
-            'teachers': ["Diana Padilla", "Jody Caroll", "Lester Vaughn"],
+            'teachers': teachers.search([])
         })
