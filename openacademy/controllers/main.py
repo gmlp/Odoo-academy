@@ -12,6 +12,7 @@ class Academy(Controller):
         })
     @http.route('/academy/<model("openacademy.teacher"):teacher>/', auth='public', website=True)
     def teacher(self, teacher):
+        print teacher.write_date
         return http.request.render('openacademy.biography', {
             'person': teacher
         })
