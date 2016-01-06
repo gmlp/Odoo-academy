@@ -27,6 +27,7 @@
         'view/openacademy_wizard_view.xml',
         'report/openacademy_session_report.xml',
         'view/openacademy_session_board.xml',
+        'view/openacademy.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

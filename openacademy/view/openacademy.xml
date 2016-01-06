@@ -1,0 +1,10 @@
+<openerp>
+    <data>
+        <template id="index">
+            <title>Academy</title>
+            <t t-foreach="teachers" t-as="t">
+                <p><t t-esc="t"/></p>
+            </t>
+        </template>
+    </data>
+</openerp>
