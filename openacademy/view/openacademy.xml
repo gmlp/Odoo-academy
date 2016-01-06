@@ -1,10 +1,16 @@
 <openerp>
     <data>
         <template id="index">
-            <title>Academy</title>
-            <t t-foreach="teachers" t-as="t">
-                <p><t t-esc="t.id"/>
-                <t t-esc="t.name"/></p>
+            <t t-call="website.layout">
+                <t t-set="title">Academy</t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <t t-foreach="teachers" t-as="t">
+                            <p><t t-esc="t.id"/>
+                            <t t-esc="t.name"/></p>
+                        </t>
+                    </div>
+                </div>
             </t>
         </template>
     </data>
