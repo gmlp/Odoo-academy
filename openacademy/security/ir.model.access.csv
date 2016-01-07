@@ -4,3 +4,4 @@ session_manager,session manager,model_openacademy_session,openacademy_group_mana
 course_read_all,course all,model_openacademy_course,,1,0,0,0
 session_read_all,session all,model_openacademy_session,,1,0,0,0
 access_openacademy_teachers,access_openacademy_teachers,model_openacademy_teacher,,1,0,0,0
+online_course_read_all,course all,model_openacademy_online_course,,1,0,0,0

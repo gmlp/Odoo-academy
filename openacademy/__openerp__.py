@@ -30,7 +30,8 @@
         'view/openacademy_wizard_view.xml',
         'report/openacademy_session_report.xml',
         'view/openacademy_session_board.xml',
-        'view/openacademy.xml',
+        'view/openacademy_website_template.xml',
+        'view/openacademy_website_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
