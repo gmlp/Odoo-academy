@@ -6,4 +6,4 @@ class Teacher(models.Model):
 
     name = fields.Char()
     biography = fields.Html()
-    course_ids = fields.One2many('openacademy.online_course', 'teacher_id', string="Courses")
+    course_ids = fields.One2many('product.template', 'teacher_id', string="Courses")

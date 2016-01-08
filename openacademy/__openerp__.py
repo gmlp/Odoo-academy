@@ -15,7 +15,7 @@
     # any module necessary for this one to work correctly
     'depends': ['base',
         'board',
-        'website',
+        'website_sale',
     ],
 
     # always loaded
@@ -32,11 +32,13 @@
         'view/openacademy_session_board.xml',
         'view/openacademy_website_template.xml',
         'view/openacademy_website_view.xml',
+        'data/openacademy_online_course_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/openacademy_course_demo.xml',
         'demo/openacademy_teacher_demo.xml',
+        'demo/openacademy_online_course_demo.xml',
     ],
     'installable': True,
     'auto_install': False,
